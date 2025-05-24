@@ -31,18 +31,28 @@ const data = ref({
 const loading = ref(true);
 const error = ref(null);
 
-// Ini URL "echo" final dari GAS yang sudah bebas redirect dan CORS
-const URL_GAS =
-  'https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjcYc_5FqxrUrCtXyWwXNR6178mjc3BUHi6khno3bujtdSH6lReBZbHT3_9bm2pvwziz2Q5TaRRVytJL9i1hQCUFGknQ6yljOLwcCRW3BfFevU6dYdHwNLMi18_D-qHIzx20mL143-fAVkamBcIMJxWfE8BXzEb5WWmHTnKusTllv4KBN2Tr6FWYXocT6oWVlTzw7oSLxaC1qLZNceKu9RiHpUsMgpmZgs9H1_jrxsMbOlmvPaviR_ZrKJqFg&lib=M7R5khhdfR7mU81mlfHyO8bee_uHNINZP';
+// URL gsx2json
+const SHEET_URL = 'https://gsx2json.com/api?id=1XZkkTcaq8uQM_YWxFPcEslHjybKITTIMTLv3HRD0mdM&sheet=PERJUANGAN';
 
 onMounted(async () => {
   loading.value = true;
   error.value = null;
   try {
-    const res = await fetch(URL_GAS);
+    const res = await fetch(SHEET_URL);
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     const json = await res.json();
-    data.value = json;
+
+    const arr = json.columns["undefined"];
+    const getValueAfterLabel = (label) => {
+      const index = arr.indexOf(label);
+      return index !== -1 && arr[index + 1] ? arr[index + 1] : 0;
+    };
+
+    data.value = {
+      pemasukan: getValueAfterLabel("PEMASUKAN"),
+      pengeluaran: getValueAfterLabel("PENGELUARAN"),
+      saldoAkhir: getValueAfterLabel("SALDO AKHIR"),
+    };
   } catch (e) {
     error.value = e.message;
   } finally {
@@ -50,7 +60,3 @@ onMounted(async () => {
   }
 });
 </script>
-
-<style>
-/* Tailwind sudah disetup via vite.config.js, pastikan sudah install tailwindcss */
-</style>
