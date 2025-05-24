@@ -55,7 +55,7 @@ function formatNumber(num) {
 }
 
 onMounted(async () => {
-  const url = 'https://script.google.com/macros/s/AKfycbwZnUW9Bw63i4cAySHn8n5QVhCavUo7EbWTYv1qNYWCMiBeEk74fl4ALgahq_0CLxID/exec'
+  const url = 'https://script.google.com/macros/s/AKfycbwo2KInJowRLTzYnMuRlLhplGdhLdjJDymsMe4FfLs/dev'
 
   try {
     loading.value = true
