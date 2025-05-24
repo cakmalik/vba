@@ -1,32 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-100 flex flex-col items-center p-6">
     <h1 class="text-3xl font-bold mb-6">POS PERJUANGAN</h1>
-    <div class="min-h-screen bg-gray-100 p-4">
-  <!-- Judul Dashboard -->
-  <h1 class="text-2xl font-bold text-center mb-6">Dashboard Kas</h1>
-
-  <!-- Saldo Kas -->
-  <div class="bg-white shadow-md rounded-xl p-6 text-center mb-6">
-    <h2 class="text-gray-600 text-lg mb-2">Saldo Kas</h2>
-    <p class="text-3xl font-bold text-blue-600">Rp 5.000.000</p>
-  </div>
-
-  <!-- Grid untuk Pemasukan & Pengeluaran -->
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <!-- Pemasukan -->
-    <div class="bg-white shadow-md rounded-xl p-4">
-      <h3 class="text-gray-600 text-base mb-1">Pemasukan</h3>
-      <p class="text-green-600 font-bold text-xl">Rp 3.500.000</p>
-    </div>
-
-    <!-- Pengeluaran -->
-    <div class="bg-white shadow-md rounded-xl p-4">
-      <h3 class="text-gray-600 text-base mb-1">Pengeluaran</h3>
-      <p class="text-red-600 font-bold text-xl">Rp 1.500.000</p>
-    </div>
-  </div>
-</div>
-
     <div v-if="loading" class="text-gray-600">Loading...</div>
     <div v-else-if="error" class="text-red-600">Error: {{ error }}</div>
     <div v-else class="space-y-4">
