@@ -122,6 +122,7 @@ const error = ref(null);
 const SHEET_URL = 'https://gsx2json.com/api?id=1XZkkTcaq8uQM_YWxFPcEslHjybKITTIMTLv3HRD0mdM&sheet=PERJUANGAN';
 
 onMounted(async () => {
+    document.title = 'POS PERJUANGAN'
     loading.value = true;
     error.value = null;
     try {
